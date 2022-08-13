@@ -24,14 +24,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://soqvcujsnbhpne:01193a8bd24a9
 db = SQLAlchemy(app)
 
 
-class User(db.model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
 
     def __init__(self, name):
         self.name = name
-class Invoice(db.model):
+class Invoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sellername = db.Column(db.String(80), nullable=False)
     sellermobile = db.Column(db.String(80), nullable=False)
