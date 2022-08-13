@@ -29,6 +29,10 @@ class User(db.Model):
     name = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
 
+    def __init__(self, name, password):
+        self.name = name
+        self.password = password
+
 class Invoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sellername = db.Column(db.String(80), nullable=False)
@@ -51,6 +55,28 @@ class Invoice(db.Model):
     amountexcltax = db.Column(db.String(120), nullable=False)
     taxamount = db.Column(db.String(120), nullable=False)
     verificationcode = db.Column(db.String(80), nullable=False)
+
+    def __init__(self, sellername, sellermobile,sellertin,sellervrn,sellerserial,selleruin,sellertaxoffice,customername,customeridtype,customerid,customermobile,receiptno,znumber,receiptdate,receipttime,receiptitem,receiptamount,amountexcltax,taxamount,verificationcode):
+        self.sellername = sellername
+        self.sellermobile = sellermobile
+        self.sellertin = sellertin
+        self.sellervrn = sellervrn
+        self.sellerserial = sellerserial
+        self.selleruin = selleruin
+        self.sellertaxoffice = sellertaxoffice
+        self.customername = customername
+        self.customeridtype = customeridtype
+        self.customerid = customerid
+        self.customermobile = customermobile
+        self.receiptno = receiptno
+        self.znumber = znumber
+        self.receiptdate = receiptdate
+        self.receipttime = receipttime
+        self.receiptitem = receiptitem
+        self.receiptamount = receiptamount
+        self.amountexcltax = amountexcltax
+        self.taxamount = taxamount
+        self.verificationcode = verificationcode
 
 
 @app.after_request
@@ -132,7 +158,7 @@ def login():
         # Query database for username
         name = request.form.get("username")
         # rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
-        user = User.query.filter_by(username= name).first()
+        user = User.query.filter_by(name= name).first()
 
         # Ensure username exists and password is correct
         if not user or not check_password_hash(users.password, request.form.get("password")):
@@ -172,7 +198,7 @@ def register():
 
         # register user to database
         try:
-            new_user = User(name= username, password= generate_password_hash(password))
+            new_user = User(username, generate_password_hash(password))
             db.session.add(new_user)
             db.session.commit()
             # db.execute("INSERT INTO users (username, hash) VALUES (?,?)",name,generate_password_hash(password))
