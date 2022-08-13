@@ -161,7 +161,7 @@ def login():
         user = User.query.filter_by(name= name).first()
 
         # Ensure username exists and password is correct
-        if not user or not check_password_hash(users.password, request.form.get("password")):
+        if not user or not check_password_hash(user.password, request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
