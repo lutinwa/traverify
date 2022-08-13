@@ -20,7 +20,7 @@ Session(app)
 
 # Configure CS50 Library to use SQLite database
 # db = SQL("sqlite:///tra.db")
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://soqvcujsnbhpne:01193a8bd24a94bbe9c9a4cdc0c47a1c5bbac7123cf3f8865725bedd274729a6@ec2-3-223-242-224.compute-1.amazonaws.com:5432/d2gb8n2jeakm30"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://soqvcujsnbhpne:01193a8bd24a94bbe9c9a4cdc0c47a1c5bbac7123cf3f8865725bedd274729a6@ec2-3-223-242-224.compute-1.amazonaws.com:5432/d2gb8n2jeakm30"
 db = SQLAlchemy(app)
 
 
