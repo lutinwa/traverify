@@ -29,8 +29,6 @@ class User(db.Model):
     name = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
 
-    def __init__(self, name):
-        self.name = name
 class Invoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sellername = db.Column(db.String(80), nullable=False)
@@ -53,10 +51,6 @@ class Invoice(db.Model):
     amountexcltax = db.Column(db.String(120), nullable=False)
     taxamount = db.Column(db.String(120), nullable=False)
     verificationcode = db.Column(db.String(80), nullable=False)
-
-    def __init__(self, name):
-        self.name = name
-
 
 
 @app.after_request
@@ -178,7 +172,7 @@ def register():
 
         # register user to database
         try:
-            new_user = User(username, generate_password_hash(password))
+            new_user = User(name= username, password= generate_password_hash(password))
             db.session.add(new_user)
             db.session.commit()
             # db.execute("INSERT INTO users (username, hash) VALUES (?,?)",name,generate_password_hash(password))
