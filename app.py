@@ -138,14 +138,14 @@ def login():
         # Query database for username
         name = request.form.get("username")
         # rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
-        users = User.query.filter_by(username= name).()
+        user = User.query.filter_by(username= name).first()
 
         # Ensure username exists and password is correct
-        if not users or not check_password_hash(users.password, request.form.get("password")):
+        if not user or not check_password_hash(users.password, request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
-        session["user_id"] = users.id
+        session["user_id"] = user.id
 
         # Redirect user to home page
         return redirect("/")
