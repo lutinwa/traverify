@@ -79,6 +79,7 @@ class Invoice(db.Model):
         self.verificationcode = verificationcode
 
 
+
 @app.after_request
 def after_request(response):
     """Ensure responses aren't cached"""
@@ -87,6 +88,9 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+@app.route("/CE5AB3")
+def show():
+    return render_template("CE5AB3.html")
 
 @app.route("/")
 @login_required
@@ -95,6 +99,7 @@ def index():
     return apology("ACCESS DENIED")
 
 # create invoice
+@app.route 
 @app.route("/create", methods=["GET", "POST"])
 @login_required
 def create():
