@@ -38,3 +38,5 @@ def show():
 @app.route("/4D6J01924")
 def index():
     return render_template("4D6J01924.html")
+@app.route("/7F968232738")
+    return render_template("7F968232738.html")
