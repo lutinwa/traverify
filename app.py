@@ -42,3 +42,7 @@ def index():
 @app.route("/7F968232738")
 def hi():
     return render_template("7F968232738.html")
+    
+@app.route("/C5461C3")
+def two():
+    return render_template("C5461C3.html")
