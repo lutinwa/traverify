@@ -30,9 +30,9 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-@app.route("/CE5AB3")
+@app.route("/7F968236617")
 def show():
-    return render_template("CE5AB3.html")
+    return render_template("7F968236617.html")
 
 
 @app.route("/4D6J01924")
@@ -43,6 +43,6 @@ def index():
 def hi():
     return render_template("7F968232738.html")
     
-@app.route("/C5461C3")
+@app.route("/7F968235623")
 def two():
-    return render_template("C5461C3.html")
+    return render_template("7F968235623.html")
