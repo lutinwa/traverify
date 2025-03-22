@@ -33,7 +33,9 @@ def after_request(response):
 @app.route("/27E1F429225")
 def show():
     return render_template("27E1F429225.html")
-
+@app.route("9E6481231")
+def show():
+    return render_template("9E6481231.html")
 
 @app.route("/4D6J01924")
 def index():
