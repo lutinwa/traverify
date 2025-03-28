@@ -36,10 +36,10 @@ def show():
 @app.route("/DEC4O0994")
 def four():
     return render_template("DEC4O0994.html")
-@app.route("H4JE008561")
+@app.route("/H4JE008561")
 def ricaldo():
     return render_template("H4JE008561.html")
-    
+
 @app.route("/9E6481231")
 def three():
     return render_template("9E6481231.html")
